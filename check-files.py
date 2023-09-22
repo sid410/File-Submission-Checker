@@ -2,7 +2,6 @@ import os
 from openpyxl import Workbook, load_workbook
 import argparse
 
-# Parse the following args. All positional all required, except the number of students
 parser = argparse.ArgumentParser()
 parser.add_argument("class_file", type=str)
 parser.add_argument("activity_folder", type=str)
@@ -11,14 +10,14 @@ parser.add_argument('check_list', nargs='+', default=[])
 parser.add_argument("-n", "--num_students", type=int, default=40)
 args = parser.parse_args()
 
-# Convert all string in list to lowercase
+# Convert all string in list to uppercase
 def uppercase_stringlist(str_list):
     for n, f in enumerate(str_list):
         str_list[n] = f.upper()
 
     return str_list
 
-# variables to check
+# path of the folder and files to check
 folder_to_check = args.activity_folder
 activity_to_check = os.path.basename(folder_to_check)
 
@@ -29,6 +28,7 @@ files_to_check.sort()
 
 # initialize workbook, worksheet, and the submissions dictionary
 def init_checking(excel_file, activity):
+
     Submissions = {}
     wb = load_workbook(excel_file)
     ids = wb['Classlist']
@@ -48,9 +48,9 @@ def init_checking(excel_file, activity):
     return wb, ws, Submissions
 
 
-# Check the submission of one student folder
+# Check the submission folder of one student
 def check_submission(Submissions, id, directory, submit_day):
-    # directory = r"D:\Dropbox\02_Work\USTP-Teach\IT315-OnlyMe-Materials\Lab\Activity1"
+
     directory += "\\" + str(id) + "_" + submit_day
 
     # Check if the student made a folder for their submission using their ID
