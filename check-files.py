@@ -41,6 +41,7 @@ def init_checking(excel_file, activity):
 
     # Create worksheet and place appropriate labels
     ws = wb.create_sheet(activity)
+    ws.column_dimensions['A'].width = 20
     ws.cell(1, 1, "Student Number")
     for i, file in enumerate(files_to_check):
         ws.cell(1, 2+i, file)
