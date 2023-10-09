@@ -5,7 +5,7 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument("class_file", type=str)
 parser.add_argument("activity_folder", type=str)
-parser.add_argument("submit_day", type=str)
+# parser.add_argument("submit_day", type=str)
 parser.add_argument('check_list', nargs='+', default=[])
 parser.add_argument("-n", "--num_students", type=int, default=40)
 args = parser.parse_args()
@@ -50,9 +50,11 @@ def init_checking(excel_file, activity):
 
 
 # Check the submission folder of one student
-def check_submission(Submissions, id, directory, submit_day):
+# def check_submission(Submissions, id, directory, submit_day):
+def check_submission(Submissions, id, directory):
 
-    directory += "\\" + str(id) + "_" + submit_day
+    # directory += "\\" + str(id) + "_" + submit_day
+    directory += "\\" + str(id)
 
     # Check if the student made a folder for their submission using their ID
     if os.path.exists(directory):
@@ -86,6 +88,7 @@ if __name__ == "__main__":
     wb, ws, sub = init_checking(args.class_file, activity_to_check)
 
     for student in sub:
-        check_submission(sub, student, folder_to_check, args.submit_day)
+        # check_submission(sub, student, folder_to_check, args.submit_day)
+        check_submission(sub, student, folder_to_check)
 
     save_submissions(sub, wb, args.class_file)
