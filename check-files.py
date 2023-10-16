@@ -1,6 +1,7 @@
 import os
 from openpyxl import Workbook, load_workbook
 import argparse
+import datetime
 
 parser = argparse.ArgumentParser()
 parser.add_argument("class_file", type=str)
@@ -40,7 +41,7 @@ def init_checking(excel_file, activity):
             Submissions[id] = {}
 
     # Create worksheet and place appropriate labels
-    ws = wb.create_sheet(activity)
+    ws = wb.create_sheet(activity + "_" + str(datetime.date.today()))
     ws.column_dimensions['A'].width = 20
     ws.cell(1, 1, "Student Number")
     for i, file in enumerate(files_to_check):
