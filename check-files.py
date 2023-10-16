@@ -58,7 +58,7 @@ def check_submission(Submissions, id, directory):
 
     # Check if the student made a folder for their submission using their ID
     if os.path.exists(directory):
-        files_submitted = os.listdir(directory)
+        files_submitted = [os.path.splitext(filename)[0] for filename in os.listdir(directory)]
         files_submitted = uppercase_stringlist(files_submitted)
     else:
         files_submitted = {}
