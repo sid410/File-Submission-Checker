@@ -61,7 +61,8 @@ def check_submission(Submissions, id, directory):
         files_submitted = os.listdir(directory)
         files_submitted = uppercase_stringlist(files_submitted)
     else:
-        return Submissions
+        files_submitted = {}
+        # return Submissions 
 
     # Check inside their folder if they have submitted the appropriate files
     for file in files_to_check:
