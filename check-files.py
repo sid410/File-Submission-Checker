@@ -54,8 +54,8 @@ def init_checking(excel_file, activity):
 # def check_submission(Submissions, id, directory, submit_day):
 def check_submission(Submissions, id, directory):
 
-    # directory += "\\" + str(id) + "_" + submit_day
-    directory += "\\" + str(id)
+    # change below so that it can directory path for both Linux and Windows
+    directory += "/" + str(id)
 
     # Check if the student made a folder for their submission using their ID
     if os.path.exists(directory):

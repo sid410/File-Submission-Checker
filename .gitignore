@@ -2,6 +2,7 @@ __pycache__/
 
 # All excel files
 *.xlsx
+.~lock*
 
 # Environments
 .env
